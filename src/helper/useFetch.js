@@ -10,22 +10,27 @@ const useFetch = (url) => {
         const fetchData = async () => {
             setLoading(true);
 
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
+            const response = await fetch(url);
 
-                setData(data);
+            if (!response.ok) {
+                const message = `An error has occured: ${response.status}`;
+                console.log('Error is occurred.');
+                setError(true);
                 setLoading(false);
-            }catch(error){
-                setError(error);
+                throw new Error(message);
+            }else {
+                const res_data = await response.json();
+                setData(res_data);
                 setLoading(false);
+                setError(false)
+                return res_data;
             }
         }
 
         fetchData();
     }, [url])
 
-    return { loading, data, error}
+    return { loading, data, error }
 }
 
 export default useFetch;

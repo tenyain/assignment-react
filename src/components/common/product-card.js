@@ -5,7 +5,7 @@ const ProductCard = (props) => {
     let { name, originalPrice, promotePrice, promotePercent, image } = props;
 
     return (
-        <div className='border rounded relative'>
+        <div className='productCard--primary'>
             {   promotePercent &&
                 <p className='absolute top-2 right-2 py-1 px-2  text-white bg-green-500 rounded-full'>
                     {promotePercent}
@@ -22,7 +22,7 @@ const ProductCard = (props) => {
                 </p>
 
                 <p className= {` ${promotePrice && 'line-through text-gray-400'} `}>
-                    {originalPrice} Ks
+                    {originalPrice}
                 </p>
             </div>
         </div>

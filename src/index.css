@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .heading--lg--darkblue {
+        @apply mb-5 text-blue-800 text-4xl font-bold
+    }
+
+    .productCard--primary {
+        @apply w-[150px] border rounded relative cursor-pointer transition-all hover:shadow-md hover:-translate-y-2;
+    }
+}
+
+/* overrid swiper css */
+
+.swiper-slide {
+    flex-shrink: unset !important; 
+    width: unset !important;
+    height: unset !important;
+}
+
+.swiper-container {
+    overflow: visible !important;
+}
