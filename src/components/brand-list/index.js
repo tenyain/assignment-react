@@ -3,30 +3,33 @@ import useFetch from '../../helper/useFetch';
 import BrandCard from '../common/brand-card';
 import { GetBrand } from '../../constants/api';
 
-const BrandList = () => {
+const BrandList = (props) => {
 
-    const [getData, setGetData] = useState(null);
-    const { data, error, loading } = useFetch(GetBrand);
+    const { brandList = 0} = props;
+    // console.log(brandList)
 
-    useEffect(() => {
-        if (data !== null) {
-            setGetData(data)
-            // console.log(data)
-        }
-    }, [data]);
+    // const [getData, setGetData] = useState(null);
+    // const { data, error, loading } = useFetch(GetBrand);
 
-    let brandList;
-    if (getData !== null) {
-        brandList = getData;
-    }
+    // useEffect(() => {
+    //     if (data !== null) {
+    //         setGetData(data)
+    //         // console.log(data)
+    //     }
+    // }, [data]);
 
-    if (loading) return (<div><h1 className='text-center text-yellow-500' >Loading</h1></div>)
-    if (error) return (<div><h1 className='text-center text-red-500' >Fail Fetch</h1></div>)
+    // let brandList;
+    // if (getData !== null) {
+    //     brandList = getData;
+    // }
+
+    // if (loading) return (<div><h1 className='text-center text-yellow-500' >Loading</h1></div>)
+    // if (error) return (<div><h1 className='text-center text-red-500' >Fail Fetch</h1></div>)
 
     return (
         <>
             {
-                (getData && brandList.length >= 1) &&
+                (brandList.length > 0) &&
                 <section className='bg-gray-100'>
                     <div className='container mx-auto p-10'>
                         <h1 className='heading--lg--darkblue'>

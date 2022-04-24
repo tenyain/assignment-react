@@ -1,9 +1,9 @@
 import React from 'react';
-import {Home} from './pages';
+import Home from './containers/container.home';
 
 const App = () => {
     return (
-        <main>
+        <main className='overflow-x-hidden'>
             <Home/>
         </main>
     );

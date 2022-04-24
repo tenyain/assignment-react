@@ -16,37 +16,39 @@ import 'swiper/components/pagination/pagination.min.css'
 
 SwiperCore.use([Navigation]);
 
-const LatestProductSlide = () => {
+const LatestProductSlide = (props) => {
 
-    const [getData, setGetData] = useState(null);
-    const { data, loading, error } = useFetch(GetLandingProductLatest);
+    const { products = [] } = props;
 
-    useEffect(() => {
-        if (data !== null) {
-            setGetData(data);
-            // console.log(data);
-        }
-    }, [data]);
+    // const [getData, setGetData] = useState(null);
+    // const { data, loading, error } = useFetch(GetLandingProductLatest);
 
-    let latestList;
-    if (getData !== null) {
-        latestList = getData;
-    }
+    // useEffect(() => {
+    //     if (data !== null) {
+    //         setGetData(data);
+    //         // console.log(data);
+    //     }
+    // }, [data]);
 
-    if (loading) return (<div><h1 className='text-center text-yellow-500' >Loading</h1></div>)
-    if (error) return (<div><h1 className='text-center text-red-500' >Fail Fetch</h1></div>)
+    // let latestList;
+    // if (getData !== null) {
+    //     latestList = getData;
+    // }
+
+    // if (loading) return (<div><h1 className='text-center text-yellow-500' >Loading</h1></div>)
+    // if (error) return (<div><h1 className='text-center text-red-500' >Fail Fetch</h1></div>)
 
     return (
         <>
             {
-                ( getData && latestList.length > 0) &&
+                ( products.length > 0) &&
                 <section>
                     <div className='container mx-auto p-10'>
                         <h1 className='heading--lg--darkblue'>New Arrivals</h1>
                         {/* <div className='flex space-x-4'> */}
                             <SwiperV1>
                                 {
-                                    latestList.map((product, index) => {
+                                    products.map((product, index) => {
                                         let name = product.name;
                                         let image = product.url;
                                         let originalPrice = `${product.originalPrice.toLocaleString()} Ks`;

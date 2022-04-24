@@ -1,12 +1,21 @@
 import React from 'react';
+import { Hook } from './hook';
 import { ProductListSlide, LatestProductSlide, BrandList } from '../../components';
 
-const Home = () => {
+const Home = (props) => {
+
+    const [latestProducts, brandList] = Hook(props)
+    // console.log(brandList)
+
     return (
         <>
             <ProductListSlide/>
-            <LatestProductSlide/>
-            <BrandList/>
+            <LatestProductSlide
+                products = {latestProducts}
+            />
+            <BrandList
+                brandList = {brandList}
+            />
         </>
     );
 }

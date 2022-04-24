@@ -1,0 +1,4 @@
+// Home
+export const PROMOTION_PRODUCT = 'PROMOTION_PRODUCT';
+export const LATEST_PRODUCT = 'LATEST_PRODUCT';
+export const BRAND_LIST = 'BRAND_LIST';
